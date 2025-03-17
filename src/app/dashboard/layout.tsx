@@ -20,12 +20,13 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
           router.push("/login"); // Redirect if not authenticated
         }
       } catch (error) {
+        console.error("Authentication error:", error);
         router.push("/login"); // Redirect if error occurs
       }
     }
 
     checkAuth();
-  }, []);
+  }, [router]); // Added router to the dependency array
 
   if (!isAuthenticated) return null; // Prevent flickering
 
